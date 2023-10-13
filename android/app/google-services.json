@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127826810927",
+    "project_id": "gdsctask-321c2",
+    "storage_bucket": "gdsctask-321c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127826810927:android:63383851c0f74f9efd4eda",
+        "android_client_info": {
+          "package_name": "com.arush.gdsc_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEMDhX4T2mPrCdq-RXFXA8_sfpmWikZBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
