@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:glass_kit/glass_kit.dart';
+import 'package:provider/provider.dart';
+
+import 'custom_elevated_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   bool isClicked = false;
   @override
   Widget build(BuildContext context) {
@@ -82,68 +86,35 @@ class _LoginPageState extends State<LoginPage> {
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.clip,
                           ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(180),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                  Card(
-                                    elevation: 8,
-                                    shape: const RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        color: Colors.white,
+                          ChangeNotifierProvider(
+                            create: (context)=> ColorBool(),
+                            child: SizedBox(
+                              height: ScreenUtil().setHeight(180),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                    Card(
+                                      elevation: 8,
+                                      shape: const RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color: Colors.white,
+                                        ),
+                                        borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
                                       ),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                    ),
-                                    child: SizedBox(
-                                      height: ScreenUtil().setHeight(55),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          ElevatedButton(onPressed: (){
-                                              setState(() {
-                                                isClicked = !isClicked;
-                                              });
-                                            },
-                                              style: ElevatedButton.styleFrom(
-                                                  shape: const RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.all(Radius.circular(12))
-                                                  ),
-                                                  fixedSize: Size(ScreenUtil().setWidth(186),ScreenUtil().setHeight(55)),
-                                                  backgroundColor: isClicked ? Colors.red : Colors.white
-                                              ),
-                                              child: Text("Register",
-                                                style: TextStyle(
-                                                  fontSize: ScreenUtil().setSp(24),
-                                                  fontFamily: GoogleFonts.poppins().fontFamily,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: isClicked ? Colors.white : Colors.black
-                                                ),) ),
-                                          ElevatedButton(onPressed: (){
-                                            setState(() {
-                                              isClicked = !isClicked;
-                                            });
-                                          },
-                                              style: ElevatedButton.styleFrom(
-                                                shape: const RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.all(Radius.circular(12))
-                                                ),
-                                                fixedSize: Size(ScreenUtil().setWidth(186),ScreenUtil().setHeight(55)),
-                                                  backgroundColor: isClicked ? Colors.white : Colors.blue
-                                              ),
-                                              child: Text("Sign In",
-                                                style: TextStyle(
-                                                    fontSize: ScreenUtil().setSp(24),
-                                                    fontFamily: GoogleFonts.poppins().fontFamily,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: isClicked ? Colors.black : Colors.white
-                                                ),)),
-                                        ],
+                                      child: SizedBox(
+                                        height: ScreenUtil().setHeight(55),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            CustomElevatedButton( buttonText: "Register", onClick: (){}, buttonColor: Colors.blue,),
+                                            CustomElevatedButton( buttonText: "Sign in", onClick: (){}, buttonColor: Colors.red,),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -156,6 +127,23 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+  }
+}
+class ColorBool extends ChangeNotifier{
+  bool _isClicked1 = true;
+  bool _isClicked2 = false;
+  bool getValue(String whom){
+    if(whom=="Sign in"){
+      return _isClicked2;
+    }
+    return _isClicked1;
+  }
+  void setValue(bool alreadyClicked){
+    if(!alreadyClicked) {
+      _isClicked1 = !_isClicked1;
+      _isClicked2 = !_isClicked2;
+    }
+    notifyListeners();
   }
 }
 
