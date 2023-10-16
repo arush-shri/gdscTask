@@ -8,14 +8,14 @@ import 'package:provider/provider.dart';
 
 import 'custom_elevated_button.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<MainPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<MainPage> {
 
   bool isClicked = false;
   @override
@@ -30,16 +30,14 @@ class _LoginPageState extends State<LoginPage> {
             useMaterial3: true,
           ),
           home: Scaffold(
-            body: SafeArea(
-              top: true,
-              child: SingleChildScrollView(
+            body:  SingleChildScrollView(
                   child: Container(
                     width: ScreenUtil().setWidth(390),
-                    height: ScreenUtil().setHeight(789),
+                    height: ScreenUtil().setHeight(844),
                     color: Colors.white,
                     child: GlassContainer.frostedGlass(
                       width: ScreenUtil().setWidth(390),
-                      height: ScreenUtil().setHeight(789),
+                      height: ScreenUtil().setHeight(844),
                       blur: 20,
                       gradient: LinearGradient(
                         colors: [
@@ -47,9 +45,10 @@ class _LoginPageState extends State<LoginPage> {
                           Colors.blue.withOpacity(0.90),
                         ],
                         begin: Alignment.topLeft,
-                        end: Alignment.bottomRight
+                        end: Alignment.bottomRight,
+                          stops: const [0.0,1.0],
                       ),
-                      padding: EdgeInsets.fromLTRB(5.w, 6.h, 5.w, 0.h),
+                      padding: EdgeInsets.fromLTRB(5.w, 60.h, 5.w, 0.h),
                       child: Column(
                         children: <Widget>[
                           Container(
@@ -122,7 +121,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   )
               ),
-            ),
           ),
         );
       },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gdsc_task/login.dart';
+import 'package:gdsc_task/main_page.dart';
+import 'package:gdsc_task/signin.dart';
 import 'firebase_options.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const SignInPage(),
     );
   }
 }
