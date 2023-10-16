@@ -21,13 +21,11 @@ class CustomElevatedButton extends StatefulWidget {
 
 class _CustomElevatedButtonState extends State<CustomElevatedButton> {
   String _buttonText = "";
-  VoidCallback _onClick = () {};
 
   @override
   void initState() {
     super.initState();
     _buttonText = widget.buttonText;
-    _onClick = widget.onClick;
   }
 
   @override
@@ -39,7 +37,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
         return ElevatedButton(
             onPressed: () {
               colorChange.setValue(colorChange.getValue(_buttonText));
-              _onClick;
+              widget.onClick();
             },
             style: ElevatedButton.styleFrom(
                 shape: const RoundedRectangleBorder(

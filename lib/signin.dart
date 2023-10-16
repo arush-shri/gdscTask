@@ -1,6 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gdsc_task/auth.dart';
+import 'package:gdsc_task/home.dart';
+import 'package:gdsc_task/main_page.dart';
+import 'package:gdsc_task/register.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,6 +20,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final auth = Auth();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,16 @@ class _SignInPageState extends State<SignInPage> {
                           CustomTextField(controller: passwordController, hintText: "Enter password", obscureText: true),
                           SizedBox(height: 40.h,),
                           ElevatedButton(
-                              onPressed: (){},
+                              onPressed: () async{
+                                try{
+                                  auth.mailSignIn(mail: usernameController.text, passwd: passwordController.text)
+                                  .then((status) {
+                                    Navigator.pop(context);
+                                    Navigator.pushReplacement(context, 
+                                    MaterialPageRoute(builder: (context) => const HomePage()));
+                                  });
+                                }catch(e){print(e);}
+                              },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)
@@ -71,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
                                   backgroundColor: const Color(0xFFA52FF3),
                                   elevation: 8
                               ),
-                              child: Text("Register",
+                              child: Text("Sign In",
                                 style: TextStyle(fontSize: 22.sp, fontFamily: GoogleFonts.poppins().fontFamily,
                                     fontWeight: FontWeight.bold, color: Colors.white),
                               )
@@ -103,7 +117,15 @@ class _SignInPageState extends State<SignInPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     GestureDetector(
-                                      onTap: (){},
+                                      onTap: () async {
+                                        try{
+                                          auth.googleSignIn().then((status) {
+                                            Navigator.pop(context);
+                                            Navigator.pushReplacement(context,
+                                                MaterialPageRoute(builder: (context) => const HomePage()));
+                                          });
+                                        }catch(e){print(e);}
+                                      },
                                       child: Container(
                                         width: 75.w,
                                         height: 60.h,
@@ -118,7 +140,15 @@ class _SignInPageState extends State<SignInPage> {
                                       ),
                                     ),
                                     GestureDetector(
-                                      onTap: (){},
+                                      onTap: () async {
+                                        try{
+                                          auth.facebookSignIn().then((status) {
+                                            Navigator.pop(context);
+                                            Navigator.pushReplacement(context,
+                                                MaterialPageRoute(builder: (context) => const HomePage()));
+                                          });
+                                        }catch(e){print(e);}
+                                      },
                                       child: Container(
                                         width: 75.w,
                                         height: 60.h,
@@ -171,7 +201,10 @@ class _SignInPageState extends State<SignInPage> {
                                     color: Colors.red,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
+                                    ..onTap = () {
+                                    Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) => const RegistrationPage()));
+                                    },
                                 ),
                                 TextSpan(
                                   text: " now",

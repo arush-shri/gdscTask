@@ -12,7 +12,20 @@
           "package_name": "com.arush.gdsc_task"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "127826810927-ojtg7fpi9v4h018epa3bk4211b07c1hl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arush.gdsc_task",
+            "certificate_hash": "1a8fdd0227e3a51fa01da833c94eaadcf81e5b6b"
+          }
+        },
+        {
+          "client_id": "127826810927-3b4qgpvju2ekmc54vppk92i6s5a6ri6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBEMDhX4T2mPrCdq-RXFXA8_sfpmWikZBc"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127826810927-3b4qgpvju2ekmc54vppk92i6s5a6ri6b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "127826810927-mb4uqh45b5calqiqtna0npv06j760q0i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.arush.gdscTask"
+              }
+            }
+          ]
         }
       }
     }

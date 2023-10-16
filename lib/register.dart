@@ -1,8 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gdsc_task/custom_elevated_button.dart';
+import 'package:gdsc_task/auth.dart';
 import 'package:gdsc_task/custom_text_field.dart';
+import 'package:gdsc_task/home.dart';
+import 'package:gdsc_task/signin.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -64,7 +66,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           CustomTextField(controller: rePasswordController, hintText: "Re-enter password", obscureText: true),
                           SizedBox(height: 40.h,),
                           ElevatedButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                try{
+                                  Auth().mailSignUp(mail: usernameController.text, passwd: passwordController.text)
+                                  .then((status) {
+                                    Navigator.pop(context);
+                                    Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) => const HomePage()));
+                                  });
+                                }catch(e){print(e);}
+                              },
                               style: ElevatedButton.styleFrom(
                                 fixedSize: Size(200.w, 50.h),
                                 backgroundColor: Colors.orange,
@@ -95,7 +106,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     color: Colors.red,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
+                                    ..onTap = () {
+                                    Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) => const SignInPage()));
+                                    },
                                 ),
                                 TextSpan(
                                   text: " now",

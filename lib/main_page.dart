@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gdsc_task/register.dart';
+import 'package:gdsc_task/signin.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:provider/provider.dart';
@@ -106,8 +108,14 @@ class _LoginPageState extends State<MainPage> {
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: <Widget>[
-                                            CustomElevatedButton( buttonText: "Register", onClick: (){}, buttonColor: Colors.blue,),
-                                            CustomElevatedButton( buttonText: "Sign in", onClick: (){}, buttonColor: Colors.red,),
+                                            CustomElevatedButton( buttonText: "Register", onClick: (){
+                                              Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => const RegistrationPage()));
+                                            }, buttonColor: Colors.blue,),
+                                            CustomElevatedButton( buttonText: "Sign in", onClick: (){
+                                              Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => const SignInPage()));
+                                            }, buttonColor: Colors.red,),
                                           ],
                                         ),
                                       ),

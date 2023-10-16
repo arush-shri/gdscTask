@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '127826810927',
     projectId: 'gdsctask-321c2',
     storageBucket: 'gdsctask-321c2.appspot.com',
+    androidClientId: '127826810927-ojtg7fpi9v4h018epa3bk4211b07c1hl.apps.googleusercontent.com',
+    iosClientId: '127826810927-mb4uqh45b5calqiqtna0npv06j760q0i.apps.googleusercontent.com',
     iosBundleId: 'com.arush.gdscTask',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '127826810927',
     projectId: 'gdsctask-321c2',
     storageBucket: 'gdsctask-321c2.appspot.com',
+    androidClientId: '127826810927-ojtg7fpi9v4h018epa3bk4211b07c1hl.apps.googleusercontent.com',
+    iosClientId: '127826810927-n8levsqkvfnhstg711lb9jcc3bo8blio.apps.googleusercontent.com',
     iosBundleId: 'com.arush.gdscTask.RunnerTests',
   );
 }
