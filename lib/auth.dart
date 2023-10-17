@@ -22,12 +22,16 @@ class Auth{
       idToken: googleAuth?.idToken
     );
 
-    UserCredential userCred = await firebaseAuth.signInWithCredential(cred);
+    await firebaseAuth.signInWithCredential(cred);
   }
 
   Future<void> facebookSignIn() async{
     final LoginResult loginResult = await FacebookAuth.instance.login();
     final OAuthCredential facebookCred = FacebookAuthProvider.credential(loginResult.accessToken!.token);
     firebaseAuth.signInWithCredential(facebookCred);
+  }
+  Future<void> appleSignIn() async {
+    final appleProvider = AppleAuthProvider();
+    await firebaseAuth.signInWithProvider(appleProvider);
   }
 }

@@ -163,7 +163,15 @@ class _SignInPageState extends State<SignInPage> {
                                       ),
                                     ),
                                     GestureDetector(
-                                      onTap: (){},
+                                      onTap: ()async {
+                                        try{
+                                          auth.appleSignIn().then((status) {
+                                            Navigator.pop(context);
+                                            Navigator.pushReplacement(context,
+                                                MaterialPageRoute(builder: (context) => const HomePage()));
+                                          });
+                                        }catch(e){print(e);}
+                                      },
                                       child: Container(
                                         width: 75.w,
                                         height: 60.h,
